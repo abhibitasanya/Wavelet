@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wavelet</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:,">
+</head>
+
+<body>
+
+  <!-- AUTH MODAL -->
+  <div id="authModal" class="modal hidden">
+    <div class="modalCard">
+      <div class="modalTop">
+        <div class="modalTitle">🎵 Wavelet</div>
+        <button id="closeAuth" class="iconBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="tabs">
+        <button id="loginTabBtn" class="tab active">Login</button>
+        <button id="registerTabBtn" class="tab">Register</button>
+      </div>
+
+      <div class="modalBody">
+        <div class="field">
+          <label>Username</label>
+          <input id="authUsername" type="text" placeholder="e.g. ucse" />
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <input id="authPassword" type="password" placeholder="min 6 chars" />
+        </div>
+
+        <button id="authSubmitBtn" class="primaryBtn">Continue</button>
+
+        <div id="authMsg" class="authMsg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APP WRAPPER -->
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h2 class="logo">🎵 Wavelet</h2>
+
+      <div class="userRow">
+        <div id="userLabel" class="userLabel">Not logged in</div>
+        <button id="logoutBtn" class="smallBtn ghostBtn">Logout</button>
+      </div>
+
+      <nav class="menu">
+        <button class="menuItem active" id="homeTab">
+          <i class="fa-solid fa-house"></i> Home
+        </button>
+        <button class="menuItem" id="searchTab">
+          <i class="fa-solid fa-magnifying-glass"></i> Search
+        </button>
+        <button class="menuItem" id="libraryTab">
+          <i class="fa-solid fa-music"></i> Library
+        </button>
+      </nav>
+
+      <div class="sideSectionTitle">Your Playlists</div>
+
+      <button id="likedSongsBtn" class="playlistBtn">
+        ❤️ Liked Songs
+      </button>
+
+      <div id="playlistList" class="playlistList"></div>
+
+      <div class="sideSectionTitle">Manage</div>
+
+      <div class="playlistCreate">
+        <input id="newPlaylistName" type="text" placeholder="New playlist name" />
+        <button id="createPlaylistBtn" class="smallBtn">Create</button>
+
+        <div class="renameRow">
+          <input id="renamePlaylistInput" type="text" placeholder="Rename selected playlist" />
+          <button id="renamePlaylistBtn" class="smallBtn">
+            <i class="fa-solid fa-pen"></i> Rename
+          </button>
+        </div>
+      </div>
+
+      <div class="addRow">
+        <select id="playlistSelect"></select>
+        <button id="addToPlaylistBtn" class="smallBtn">
+          <i class="fa-solid fa-plus"></i> Add
+        </button>
+      </div>
+
+      <button id="removeFromPlaylistBtn" class="addBtn dangerBtn">
+        <i class="fa-solid fa-minus"></i> Remove current song from selected playlist
+      </button>
+
+      <button id="deletePlaylistBtn" class="addBtn dangerBtn">
+        <i class="fa-solid fa-trash"></i> Delete selected playlist
+      </button>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <!-- SEARCH -->
+      <div class="searchBar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search songs..." />
+      </div>
+
+      <div id="pageHeader" class="pageHeader">
+      <h1 id="pageTitle">Home</h1>
+      <p id="pageSubtitle">Welcome to Wavelet</p>
+    </div>
+
+
+      <!-- HOME SECTIONS -->
+      <div id="continueSection" class="homeSection">
+        <h3>Continue Listening</h3>
+        <div id="continueList" class="homeGrid"></div>
+      </div>
+
+      <div id="recentSection" class="homeSection">
+        <h3>Recently Played</h3>
+        <div id="recentList" class="recentGrid"></div>
+      </div>
+
+      <div id="mostSection" class="homeSection">
+        <h3>Most Played</h3>
+        <div id="mostList" class="homeGrid"></div>
+      </div>
+
+      <div id="recSection" class="homeSection">
+        <h3>Recommended For You</h3>
+        <div id="recList" class="homeGrid"></div>
+      </div>
+
+      <h1>Now Playing</h1>
+
+      <!-- ALBUM ART -->
+      <div class="albumWrapper">
+        <img id="albumArt" src="" alt="Album Art" />
+      </div>
+
+      <!-- SONG CARD -->
+      <div class="songCard">
+        <div class="songInfo">
+          <h3 id="songTitle">Loading...</h3>
+          <p id="songArtist">Wavelet</p>
+        </div>
+
+        <div class="controls">
+          <button id="prevBtn" class="controlBtn">
+            <i class="fa-solid fa-backward"></i>
+          </button>
+
+          <button id="playBtn" class="playBtn">
+            <i id="playIcon" class="fa-solid fa-play"></i>
+          </button>
+
+          <button id="nextBtn" class="controlBtn">
+            <i class="fa-solid fa-forward"></i>
+          </button>
+
+          <button id="shuffleBtn" class="controlBtn" title="Shuffle">
+            <i class="fa-solid fa-shuffle"></i>
+          </button>
+
+          <button id="repeatBtn" class="controlBtn" title="Repeat">
+            <i class="fa-solid fa-repeat"></i>
+          </button>
+
+          <button id="queueBtn" class="controlBtn" title="Queue">
+            <i class="fa-solid fa-list"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- PLAYLIST LIST -->
+      <!-- LIBRARY CARDS (shows nicely in Library tab) -->
+<div id="libraryGrid" class="libraryGrid" style="display:none;">
+  <div id="likedCard" class="libCard">
+    <div class="libIcon"><i class="fa-solid fa-heart"></i></div>
+    <div class="libMeta">
+      <div class="t">Liked Songs</div>
+      <div class="s">Your favorites</div>
+    </div>
+  </div>
+
+
+<div id="playlistsGrid" class="libraryGrid" style="display:none;"></div>
+
+
+  <div id="playlistsCard" class="libCard">
+    <div class="libIcon"><i class="fa-solid fa-list"></i></div>
+    <div class="libMeta">
+      <div class="t">Playlists</div>
+      <div class="s">Manage your playlists</div>
+    </div>
+  </div>
+</div>
+
+<h2 class="playlistTitle" id="listTitle">Playlist</h2>
+<div id="songList" class="songList"></div>
+
+
+    </main>
+  </div>
+
+  <!-- PLAYER BAR -->
+  <div class="player">
+    <span id="currentTime">0:00</span>
+
+    <input type="range" id="progressBar" min="0" max="100" value="0" />
+
+    <button id="muteBtn" class="muteBtn">
+      <i id="muteIcon" class="fa-solid fa-volume-high"></i>
+    </button>
+
+    <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="1" />
+
+    <span id="duration">0:00</span>
+  </div>
+
+  <!-- QUEUE PANEL -->
+  <div id="queuePanel" class="queuePanel hidden">
+    <div class="queueTop">
+      <div class="queueTitle">Up Next</div>
+      <button id="closeQueueBtn" class="iconBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div id="queueList" class="queueList"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

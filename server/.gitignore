@@ -1,0 +1,9 @@
+__pycache__/
+.env
+*.log
+
+
+#*.db
+#wavelet.db
+#likes.json
+#playlists.json

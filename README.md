@@ -7,8 +7,7 @@ It integrates with the Jamendo API to stream global tracks and delivers a smooth
 
 ## 🌐 Live Demo
 
-👉 https://wavelet-music.netlify.app
-    https://wavelet-6qht.onrender.com
+👉 https://wavelet-6qht.onrender.com
 
 ---
 
@@ -30,7 +29,7 @@ It integrates with the Jamendo API to stream global tracks and delivers a smooth
 | Frontend   | HTML, CSS, JavaScript                |
 | Backend    | Python (Flask), Gunicorn             |
 | API        | Jamendo Music API                    |
-| Deployment | Netlify (Frontend), Render (Backend) |
+| Deployment | Render (Frontend and Backend) |
 
 ---
 

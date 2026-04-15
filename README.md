@@ -8,6 +8,7 @@ It integrates with the Jamendo API to stream global tracks and delivers a smooth
 ## 🌐 Live Demo
 
 👉 https://wavelet-music.netlify.app
+    https://wavelet-6qht.onrender.com
 
 ---
 
